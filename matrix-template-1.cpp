@@ -10,7 +10,7 @@ private:
   int data[SIZE][SIZE];  // 2D array for matrix data (using int for simplicity)
 
 public:
-  // 1. Read values from stdin into a matrix
+  // 1. Read values from stdin into a matrix, user enters each element one by one
   void readFromStdin() {
     for (int i=0; i<SIZE; i++) {
       for (int j=0; j<SIZE; j++) {
@@ -19,7 +19,7 @@ public:
     }
   }
 
-  // 2. Display a matrix
+  // 2. Display a matrix with a tab in between each column for readability
   void display() const {
     for (int i=0; i<SIZE; i++) {
       for (int j=0; j<SIZE; j++) {
@@ -45,9 +45,10 @@ public:
     Matrix product;
     for (int i=0; i<SIZE; i++) {
       for (int j=0; j<SIZE; j++) {
-        product.data[i][j] = 0;
+        product.data[i][j] = 0; //initializes each element of the product equal to 0 to avoid using random junk from memory
 
         for (int k=0; k<SIZE; k++) {
+          //The element of the product is the ith row multiplied by the jth column. k iterates through each element of a row/col
           product.data[i][j] += data[i][k] * other.data[k][j];
         }
       }
